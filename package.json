@@ -1,0 +1,28 @@
+{
+  "name": "claude-coach",
+  "version": "0.1.0",
+  "description": "AI prompt efficiency coach for Claude Code — find what's burning your tokens",
+  "main": "index.js",
+  "bin": {
+    "claude-coach": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "install_hook": "node install.js",
+    "uninstall_hook": "node install.js --uninstall",
+    "test_hook": "echo '{\"prompt\":\"ls -la\",\"transcript_path\":\"\"}' | node hook.js"
+  },
+  "keywords": [
+    "claude",
+    "anthropic",
+    "claude-code",
+    "tokens",
+    "cost",
+    "optimization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  }
+}
