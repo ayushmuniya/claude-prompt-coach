@@ -130,7 +130,7 @@ function runHeuristics(prompt, tokens, model, recentPrompts = []) {
 
   // ── 1. SESSION DRAG ──────────────────────────────────────────────────────
   // Only flag if context is genuinely not needed for this prompt
-  if (cacheRead > 15000 && input < 20 && output < 100 && !ctxNeeded) {
+  if (cacheRead > 8000 && input < 20 && output < 100 && !ctxNeeded) {
     flags.push({
       id: 'session_drag', sev: cacheRead > 35000 ? 'high' : 'medium',
       message: `"${intent.replace('_',' ')}" query dragging ${fmtN(cacheRead)} cached tokens it doesn't need`,
@@ -190,7 +190,7 @@ function runHeuristics(prompt, tokens, model, recentPrompts = []) {
 
   // ── 4. CONTEXT NOT NEEDED ────────────────────────────────────────────────
   // Only flag generic/educational questions inside Claude Code
-  if (cacheRead > 10000 && !ctxNeeded && complexity <= 3
+  if (cacheRead > 6000 && !ctxNeeded && complexity <= 3
       && !['build_task','debug_task','refactor_task','review_task','test_task'].includes(intent)) {
     flags.push({
       id: 'context_unnecessary', sev: 'medium',
